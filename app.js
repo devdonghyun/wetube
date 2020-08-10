@@ -21,6 +21,7 @@ const app = express();
 // middleware : 원하는 만큼 가질 수 있음, 유저의 로그인 여부 체크,
 //파일 전송할 때 중간에서 가로채기, 접속에 대한 로그를 작성
 
+app.set("view engine", "pug");
 // middleware는  res.send를 실행하는 함수를 발동하면 연결을 끊을 수도 있음
 // 서버를 설정하는 내용
 app.use(cookieParser()); // 서버가 유저로부터 받은 cookie를 이해하는 방법
