@@ -11,6 +11,7 @@ import bodyParser from "body-parser"; // form을 받았을 때, 그 데이터를
 //cookie와 body를 다루는 걸 도와줌
 // body로부터 정보를 얻을 수 있게 해줌
 //cookie에 session을 다루기 위해 유저 정보 저장
+import { localsMiddleware } from "./middlewares";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
@@ -21,6 +22,7 @@ const app = express();
 // middleware : 원하는 만큼 가질 수 있음, 유저의 로그인 여부 체크,
 //파일 전송할 때 중간에서 가로채기, 접속에 대한 로그를 작성
 
+app.use(helmet());
 app.set("view engine", "pug");
 // middleware는  res.send를 실행하는 함수를 발동하면 연결을 끊을 수도 있음
 // 서버를 설정하는 내용
@@ -29,7 +31,8 @@ app.use(bodyParser.json()); // 서버가 유저로부터 받은 데이터를 이
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan("dev")); // middleware 마운트할 때 사용
-app.use(helmet());
+
+app.use(localsMiddleware);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter); // use : 누군가 이 경로에 들어오면 이 router 전체를 사용하겠다는 의미
