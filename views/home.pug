@@ -2,4 +2,7 @@ extends layouts/main
 //- home 화면이 레이아웃 코드를 복붙한다는 뜻
 
 block content
-    p Home
+    .videos
+        each video in videos
+            h1= video.title
+            p= item.description
