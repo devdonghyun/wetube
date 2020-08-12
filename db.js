@@ -2,9 +2,10 @@ export const videos = [
   {
     id: 24342424232,
     title: "video awesome",
-    descirption: "This is something I love",
+    description: "This is something I love",
     views: 24,
-    videoFile: "https://archive.org/details/BigBuckBunny_124",
+    videoFile:
+      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
     creator: {
       id: 1324,
       name: "Nicolas",
@@ -14,9 +15,10 @@ export const videos = [
   {
     id: 24342424,
     title: "video super",
-    descirption: "This is something I love",
+    description: "This is something I love",
     views: 24,
-    videoFile: "https://archive.org/details/BigBuckBunny_124",
+    videoFile:
+      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
     creator: {
       id: 1324,
       name: "Nicolas",
@@ -26,9 +28,10 @@ export const videos = [
   {
     id: 2434224333,
     title: "video perfect",
-    descirption: "This is something I love",
+    description: "This is something I love",
     views: 24,
-    videoFile: "https://archive.org/details/BigBuckBunny_124",
+    videoFile:
+      "https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4",
     creator: {
       id: 1324,
       name: "Nicolas",

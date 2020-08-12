@@ -1,8 +1,12 @@
 extends layouts/main
 //- home 화면이 레이아웃 코드를 복붙한다는 뜻
+include mixins/videoBlock
 
 block content
     .videos
         each video in videos
-            h1= video.title
-            p= item.description
+            +videoBlock({
+                title:video.title,
+                views :video.views,
+                videoFile:video.videoFile
+            })
