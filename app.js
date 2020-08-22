@@ -25,6 +25,7 @@ const app = express();
 app.use(helmet());
 app.set("view engine", "pug");
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("static"));
 // middleware는  res.send를 실행하는 함수를 발동하면 연결을 끊을 수도 있음
 // 서버를 설정하는 내용
 app.use(cookieParser()); // 서버가 유저로부터 받은 cookie를 이해하는 방법
