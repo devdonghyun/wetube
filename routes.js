@@ -13,6 +13,7 @@ const USERS = "/users";
 const USER_DETAIL = "/:id"; // /users/1
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
+const ME = "/me";
 
 //VIDEOS
 
@@ -21,6 +22,16 @@ const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit"; // vidieos/1/edit, express가 :id라고 하면 변하는 값이라 인지
 const DELETE_VIDEO = "/:id/delete";
+
+//Github
+
+const GITHUB = "/auth/github";
+const GITHUB_CALLBACK = "/auth/github/callback";
+
+// Facebook
+
+const FB = "/auth/facebook";
+const FB_CALLBACK = "/auth/facebook/callback";
 
 const routes = {
   home: HOME,
@@ -61,6 +72,11 @@ const routes = {
       return DELETE_VIDEO;
     }
   },
+  github: GITHUB,
+  githubCallback: GITHUB_CALLBACK,
+  me: ME,
+  facebook: FB,
+  facebookCallback: FB_CALLBACK,
 };
 
 export default routes;

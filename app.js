@@ -11,16 +11,24 @@ import bodyParser from "body-parser"; // form을 받았을 때, 그 데이터를
 //cookie와 body를 다루는 걸 도와줌
 // body로부터 정보를 얻을 수 있게 해줌
 //cookie에 session을 다루기 위해 유저 정보 저장
+
+import passport from "passport";
+import mongoose from "mongoose";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middlewares";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
+import "./passport";
 
 const app = express();
 //const app에 express를 실행해서 담은 것
 // middleware : 원하는 만큼 가질 수 있음, 유저의 로그인 여부 체크,
 //파일 전송할 때 중간에서 가로채기, 접속에 대한 로그를 작성
+
+const CookieStore = MongoStore(session);
 
 app.use(helmet());
 app.set("view engine", "pug");
@@ -33,6 +41,17 @@ app.use(bodyParser.json()); // 서버가 유저로부터 받은 데이터를 이
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan("dev")); // middleware 마운트할 때 사용
+
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: true,
+    saveUninitialized: false,
+    store: new CookieStore({ mongooseConnection: mongoose.connection }),
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(localsMiddleware);
 
