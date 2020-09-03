@@ -20,6 +20,7 @@ import { localsMiddleware } from "./middlewares";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+import apiRouter from "./routers/apiRouter";
 import routes from "./routes";
 import "./passport";
 
@@ -58,5 +59,6 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter); // use : 누군가 이 경로에 들어오면 이 router 전체를 사용하겠다는 의미
 app.use(routes.videos, videoRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
